@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Threading;
+using System.Globalization;
 
 class QuadraticEquation
 {
@@ -6,7 +8,7 @@ class QuadraticEquation
     //real roots). 
     static void Main(string[] args)
     {
-        //TODO Thread
+        Thread.CurrentThread.CurrentCulture = CultureInfo.InvariantCulture;
         double numberA = double.Parse(Console.ReadLine());
         double numberB = double.Parse(Console.ReadLine());
         double numberC = double.Parse(Console.ReadLine());

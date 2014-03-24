@@ -12,14 +12,14 @@ class FormattingNumbers
     static void Main(string[] args)
     {
         int numberA = -1;
-        //bool isInRange = numberA >= 0 && numberA <= 500;
         while (!(numberA >= 0 && numberA <= 500))
         {
             Console.WriteLine("Enter a number between 0 and 500.");
             numberA = int.Parse(Console.ReadLine());
         }
-
+        Console.WriteLine("Enter a floating-point number.");
         double numberB = double.Parse(Console.ReadLine());
+        Console.WriteLine("Enter a floating-point number.");
         double numberC = double.Parse(Console.ReadLine());
 
         string hexA = Convert.ToString(numberA, 16).PadRight(10);
@@ -30,18 +30,6 @@ class FormattingNumbers
         string intC = numberB.ToString().PadLeft(10);
 
         Console.WriteLine("|{0}|{1}|{2}|{3}|", hexA.ToUpper(), bits, numB, numC);
-
-        //string str = Console.ReadLine();
-        //int number;
-        //if (int.TryParse(str, out number))
-        //{
-        //    Console.WriteLine("Valid number: {0}", number);
-        //}
-        //else
-        //{
-        //    Console.WriteLine("Invalid number: {0}", str);
-        //}
-
     }
 }
 
