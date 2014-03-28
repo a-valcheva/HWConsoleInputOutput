@@ -18,7 +18,7 @@ namespace _12.FallingRocks
      */
     public struct Rock
     {
-        public string Type { get; set; }
+        public char[] Type { get; set; }
         public int Row { get; set; }
         public int Column { get; set; }
         public ConsoleColor Color { get; set; }
@@ -40,7 +40,7 @@ namespace _12.FallingRocks
         private static Rock User()
         {
             Rock user = new Rock();
-            user.Type = "(0)";
+            user.Type = new char[] { '(','0', ')'};
             user.Row = Console.BufferHeight -1;
             user.Column = playFieldWidth / 2;
             user.Color = ConsoleColor.Gray;
@@ -54,11 +54,16 @@ namespace _12.FallingRocks
             Random randomGenerator = new Random();
             Rock newRock = new Rock();
             ConsoleColor[] newColor = new ConsoleColor[] { ConsoleColor.Green, ConsoleColor.Red, ConsoleColor.Yellow, ConsoleColor.Blue };
-            string[] newType = new string[] { "^", "^^", "^^^", "@", "@@", "@@@", "*", "**", "***", "&", "&&", "&&&", "+", "++", "+++", "%", "%%", "%%%", "$", "$$", "$$$", "#", "##", "###", "!", "!!", "!!!", ".", "..", "...", ";", ";;", ";;;" };
+            char[] newType = new char[] { '^', '@', '*', '&', '+', '%', '$', '#', '!', '.', ';' };
             newRock.Column = randomGenerator.Next(0, playFieldWidth);
             newRock.Row = 0;
             int typeChoice = randomGenerator.Next(0, newType.Length);
-            newRock.Type = newType[typeChoice];
+            int newRockLenth = randomGenerator.Next(0, 3);
+            newRock.Type = new char[newRockLenth];
+            for (int i = 0; i < newRock.Type.Length; i++)
+            {
+                newRock.Type[i] = newType[typeChoice];
+            }
             int colorChoice = randomGenerator.Next(0, newColor.Length);
             newRock.Color = newColor[colorChoice];
             return newRock;
@@ -119,11 +124,20 @@ namespace _12.FallingRocks
                     {
                         newRocks.Add(newRock);
                     }
-                    if (newRock.Column == user.Column && newRock.Row == user.Row)
+                    //This way of calculating score is very slowly and the exact result will be printed with delay
+                    if (newRock.Row == user.Row)
                     {
-                        user.ScorePoints -= 1;
+                        for (int index = 0; index < newRock.Type.Length; index++)
+                        {
+                            for (int j = 0; j < user.Type.Length; j++)
+                            {
+                                if (newRock.Column + newRock.Type[index] == user.Column + user.Type[j])
+                                {
+                                    user.ScorePoints -= 1;
+                                }
+                            }
+                        }
                     }
-                    //TODO reset the user color
                     
                 }
                 rocks = newRocks;
