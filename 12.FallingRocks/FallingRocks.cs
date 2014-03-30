@@ -125,20 +125,27 @@ namespace _12.FallingRocks
                         newRocks.Add(newRock);
                     }
                     //This way of calculating score is very slowly and the exact result will be printed with delay
+                    bool crash = false;
                     if (newRock.Row == user.Row)
                     {
-                        for (int index = 0; index < newRock.Type.Length; index++)
+                        for (int index = 0; index < user.Type.Length; index++)
                         {
-                            for (int j = 0; j < user.Type.Length; j++)
+                            for (int j = 0; j < newRock.Type.Length; j++)
                             {
-                                if (newRock.Column + i == user.Column + j)
+                                if (newRock.Column + j == user.Column + i)
                                 {
+                                    crash = true;
                                     user.ScorePoints -= 1;
+                                    break;
                                 }
                             }
+                            if (crash)
+                            {
+                                break;
+                            }
                         }
+                        crash = false;
                     }
-                    
                 }
                 rocks = newRocks;
                 Console.Clear();
