@@ -131,7 +131,7 @@ namespace _12.FallingRocks
                         {
                             for (int j = 0; j < user.Type.Length; j++)
                             {
-                                if (newRock.Column + newRock.Type[index] == user.Column + user.Type[j])
+                                if (newRock.Column + i == user.Column + j)
                                 {
                                     user.ScorePoints -= 1;
                                 }
