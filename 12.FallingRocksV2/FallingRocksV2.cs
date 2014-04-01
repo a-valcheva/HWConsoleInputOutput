@@ -59,10 +59,7 @@ namespace _12.FallingRocksV2
             int typeChoice = randomGenerator.Next(0, newType.Length);
             //int newRockLenth = randomGenerator.Next(0, 3);
             newRock.Type = new char[1];
-            for (int i = 0; i < newRock.Type.Length; i++)
-            {
-                newRock.Type[i] = newType[typeChoice];
-            }
+            newRock.Type[0] = newType[typeChoice];
             int colorChoice = randomGenerator.Next(0, newColor.Length);
             newRock.Color = newColor[colorChoice];
             return newRock;
