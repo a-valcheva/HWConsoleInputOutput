@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Threading;
 using System.Diagnostics;
 
-namespace _12.FallingRocks
+namespace _12.FallingRocksV2
 {
     /*
      Implement the "Falling Rocks" game in the text console. A small dwarf stays at the bottom of the screen and can move left 
@@ -41,8 +41,8 @@ namespace _12.FallingRocks
         private static Rock User()
         {
             Rock user = new Rock();
-            user.Type = new char[] { '(','0', ')'};
-            user.Row = Console.BufferHeight -1;
+            user.Type = new char[] { '(', '0', ')' };
+            user.Row = Console.BufferHeight - 1;
             user.Column = playFieldWidth / 2;
             user.Color = ConsoleColor.Gray;
             user.ScorePoints = 100;
@@ -57,8 +57,8 @@ namespace _12.FallingRocks
             newRock.Column = randomGenerator.Next(0, playFieldWidth);
             newRock.Row = 0;
             int typeChoice = randomGenerator.Next(0, newType.Length);
-            int newRockLenth = randomGenerator.Next(0, 3);
-            newRock.Type = new char[newRockLenth];
+            //int newRockLenth = randomGenerator.Next(0, 3);
+            newRock.Type = new char[1];
             for (int i = 0; i < newRock.Type.Length; i++)
             {
                 newRock.Type[i] = newType[typeChoice];
@@ -126,7 +126,7 @@ namespace _12.FallingRocks
 
                     if (newRock.Row == user.Row)
                     {
-                        if ((newRock.Column >= user.Column && newRock.Column <= user.Column + user.Type.Length) || (newRock.Column + newRock.Type.Length >= user.Column && newRock.Column + newRock.Type.Length <= user.Column + user.Type.Length))
+                        if (newRock.Column >= user.Column && newRock.Column <= user.Column + user.Type.Length)
                         {
                             user.ScorePoints--;
                         }

@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{30A4DAC3-BF41-45C1-96F0-BD104F58DD70}</ProjectGuid>
+    <ProjectGuid>{D04BD101-2A22-482F-A8B8-0C08EF5AF210}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>_12.FallingRocksV2</RootNamespace>
-    <AssemblyName>12.FallingRocks</AssemblyName>
+    <AssemblyName>12.FallingRocksV2</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -41,7 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FallingRocks.cs" />
+    <Compile Include="FallingRocksV2.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
